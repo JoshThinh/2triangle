@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Homepage</title>
+    <link rel="stylesheet" href="{{site.baseurl}}/script/css/home.css">
+    <script src="{{site.baseurl}}/script/javascript/button.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+<body>
+<header>
+    <div class="bg">
+        <div class="content">
+            <div class="buttonarea" onclick="galaxygame()">
+                <div class="buttonimage">
+                    <img src="{{site.baseurl}}/images/JoshShip.png">
+                </div>
+                <div class="buttontitle">
+                    <h2>STEER CLEAR</h2>
+                </div>
+                <div class="buttondesc">
+                    <p>Galaxy Game is an expanded version of the 1962 Spacewar!, potentially the first video game to spread to multiple computer installations. It features a spaceship, "the needle", maneuvering in the gravity well of a star. The ship has one goal: don't hit the asteroid. </p>
+                </div>
+            </div>
+            <div class="buttonarea"  onclick="dodgegame()">
+                <div class="buttonimage">
+                    <img src="{{site.baseurl}}/images/Asteroid.png">
+                </div>
+                <div class="buttontitle">
+                    <h2>DODGE THE ASTROIDS</h2>
+                </div>
+                <div class="buttondesc">
+                    <p>Dodge the Asteroids is a spinoff of the original and beloved game flappybird, but uses space and flight to dodge asteroids instead of pipes</p>
+                </div>
+            </div>
+            <div class="buttonarea"  onclick="escapegame()">
+                <div class="buttonimage">
+                    <img src="{{site.baseurl}}/images/Astro.png">
+                </div>
+                <div class="buttontitle">
+                    <h2>ESCAPE THE ASTEROID BELT</h2>
+                </div>
+                <div class="buttondesc">
+                    <p>Escape the Asteroid Belt is a simple game that revolves around the idea of a lost astronaut in space trying to reach home, navigate your way through a maze of walls and reach your base!</p>
+                </div>
+            </div>
+            <button class="open-button" onclick="openForm()">Chat</button>
+            <button class="open-button2" onclick="openDatabase()">Database</button>
+            <button class="open-button3" onclick="openIndex()">Back to login</button>
+        </div>
+    </div>
+</header>
+
+<!-- JavaScript Function to Redirect to Database Page -->
+<script>
+    function openForm() {
+        window.location.href = "{{site.baseurl}}/chat";
+    }
+
+    function openDatabase() {
+        window.location.href = "{{site.baseurl}}/database";
+    }
+
+    function openIndex() {
+        window.location.href = "{{site.baseurl}}/index";
+    }
+</script>
+
+</body>
+</html>
