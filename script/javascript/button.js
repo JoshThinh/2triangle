@@ -21,3 +21,7 @@ function games() {
 function friends() {
     window.location.href = 'friends'; 
 }
+
+function main_menu() {
+    window.location.href = 'main_menu'; 
+}
