@@ -78,7 +78,7 @@ permalink: /tbftpredict/
                     'firstmove': parseInt(document.getElementById('fmove').value),
                     'firstattack': parseInt(document.getElementById('fattack').value),
                 };
-            const url = 'http://127.0.0.1:8086/api/tbftML/predict';
+            const url = 'http://127.0.0.1:8918/api/tbftML/predict';
                 // Change options according to Authentication requirements
             const authOptions = {
                 method: 'POST', // Override the method property
