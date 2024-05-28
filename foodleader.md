@@ -1,0 +1,76 @@
+---
+permalink: /foodleader
+---
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard Homepage</title>
+    <link rel="stylesheet" href="{{site.baseurl}}/script/css/header.css">
+    <script src="{{site.baseurl}}/script/javascript/button.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+ <header class="second-header">
+    <div class="box-center-header">
+        <button class="btn-primary-right" onclick="openFood()">Food</button>
+        </div>
+    <hr>
+    <h1>
+        <div class="box">Food Leaderboard</div>
+    </h1>
+</header>
+    <div class="bg">
+        <div class="tablecontent">           
+            <table class="table table-striped table-dark table-bordered table-hover">
+                <thead class="thread-dark">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">UserId</th>
+                    <th scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody id="result">
+                </tbody>
+              </table>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function openFood() {
+        window.location.href = "{{site.baseurl}}/food";
+    }
+</script>
+<script type="module">
+ import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
+  const url = uri + '/api/foods';
+  let users = [];
+  const resultContainer = document.getElementById("result");     
+fetchfoodleaders();
+function fetchfoodleaders() {
+  fetch(url, options)
+    .then(response => { 
+      if (response.status !== 200) {
+      }   
+      response.json().then(data => {
+          console.log(data);
+          users = data;
+          for (const row of data) {   
+            const tr = document.createElement("tr");
+            const name = document.createElement("td");
+            const uid = document.createElement("td");
+            const score = document.createElement("td");
+            name.innerHTML = row.name; 
+            uid.innerHTML = row.uid; 
+            score.innerHTML = row.tokens;
+            tr.appendChild(name);
+            tr.appendChild(uid);
+            tr.appendChild(score);
+            resultContainer.appendChild(tr);
+          }
+      })
+  })
+}
+window.fetchfoodleaders = fetchfoodleaders;   
+</script>

@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+#pantry {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.food-item {
+    width: 100px;
+    height: auto; /* Allow height to adjust based on content */
+    border: 1px solid #ccc;
+    background-color: dodgerblue;
+    display: flex;
+    flex-direction: column; /* Stack name and price vertically */
+    align-items: center; /* Center name and price horizontally */
+    justify-content: center;
+    cursor: grab;
+}
+
+.food-item .name {
+    margin-bottom: 5px; /* Add some space between name and price */
+    color: black;
+}
+
+.food-item .price {
+    font-weight: bold; /* Make price bold */
+    color: black;
+}
+
+
+.section {
+    display: inline-block;
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    background-color: orange;
+    cursor: pointer;
+    min-width: 120px;
+    color: black;
+}
+
+section select {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    color: black;
+}
