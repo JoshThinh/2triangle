@@ -78,8 +78,8 @@
 }
 
 .button a {
-    text-decoration: none; /* Remove the underline from the link */
-    color: white; /* Set the link text color to black */
+    text-decoration: none; 
+    color: white; 
 }
 
 
@@ -87,9 +87,9 @@
     background-image: url("../../images/background2.png");
 }
 
- /* Set the text color to white and adjust position for the "About us" heading */
+
  .box {
     color: white;
-    margin-top: 20px; /* Move down 20 pixels */
-    margin-left: 20px; /* Move right 20 pixels */
+    margin-top: 20px; 
+    margin-left: 20px; 
 }

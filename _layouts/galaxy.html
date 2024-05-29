@@ -33,57 +33,38 @@
 </html>
 
 
-
-
-
 <script type="module">
     import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
-    // Get the modal
     function postplayerscore(){
 
         const username = window.sessionStorage.username; 
-    
-
-        // Set Users endpoint (list of users)
         const url = uri + '/api/players';
-    
-        // Set body of request to include login data from DOM
         const body = {
             uid: username,
             name:username,
             tokens: score
         };
-    
-          // Change options according to Authentication requirements
           const authOptions = {
-            method: 'POST', // Override the method property
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'include', // include, same-origin, omit
+            method: 'POST',
+            mode: 'cors',
+            cache: 'default',
+            credentials: 'include',
             headers: {
               'Content-Type': 'application/json',
             },
             body:  JSON.stringify(body),
         };
-    
-    
-        // Fetch JWT
         fetch(url, authOptions)
         .then(response => {
-            // handle error response from Web API
             if (!response.ok) {
                 console.log("not success");
             }else{
-            // Success!!!
-            // Redirect to the database page
             console.log("success");
             }
         })
-        // catch fetch errors (ie ACCESS to server blocked)
         .catch(err => {
             console.error(err);
         });
     }
-   
     window.postplayerscore = postplayerscore;
-    </script>
+</script>

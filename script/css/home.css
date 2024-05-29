@@ -100,7 +100,7 @@ header {
 }
 
 
-/* Button used to open the chat form - fixed at the bottom of the page */
+
 .open-button {
     background-color: #555;
     color: white;
@@ -136,7 +136,20 @@ header {
     opacity: 0.8;
     position: fixed;
     bottom: 23px;
-    right: 951x;
+    right: 951px;
+    width: 280px;
+  }
+
+  .open-button4 {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 400px;
     width: 280px;
   }
 

@@ -42,57 +42,35 @@
 </html>
 
 <script type="module">
-  // uri variable and options object are obtained from config.js
+ 
  import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
-
-  // Set Users endpoint (list of users)
   const url = uri + '/api/players';
-
   let users = [];
-  
-
-  // prepare HTML result container for new output
-  const resultContainer = document.getElementById("result");
-
-        // Change options according to Authentication requirements
-       
-
+  const resultContainer = document.getElementById("result");     
 fetchleaders();
 
-
 function fetchleaders() {
-  // fetch the API
   fetch(url, options)
-    // response is a RESTful "promise" on any successful fetch
-    .then(response => {
-      // check for response errors and display
+    .then(response => { 
       if (response.status !== 200) {
-
       }
-      // valid response will contain JSON data
+      
       response.json().then(data => {
           console.log(data);
           users = data;
-          for (const row of data) {
-            // tr and td build out for each row
+          for (const row of data) {   
             const tr = document.createElement("tr");
             const name = document.createElement("td");
             const uid = document.createElement("td");
             const score = document.createElement("td");
-                          // data is specific to the API
 
-            // data is specific to the API
             name.innerHTML = row.name; 
             uid.innerHTML = row.uid; 
             score.innerHTML = row.tokens;
 
-
-            // this builds td's into tr
             tr.appendChild(name);
             tr.appendChild(uid);
             tr.appendChild(score);
-            // append the row to table
-
             resultContainer.appendChild(tr);
           }
       })
