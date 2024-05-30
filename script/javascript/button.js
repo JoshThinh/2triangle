@@ -25,3 +25,7 @@ function friends() {
 function main_menu() {
     window.location.href = 'main_menu'; 
 }
+
+function explain() {
+    window.location.href = 'explain';
+}

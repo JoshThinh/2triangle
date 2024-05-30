@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explanation</title>
+    <link rel="stylesheet" href="{{site.baseurl}}/script/css/home.css">
+    <script src="{{site.baseurl}}/script/javascript/button.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="bg">
+        <div class="content">
+            <p>
+                <strong>Key Operations and Functions</strong>
+                <br><br>
+                <strong>initializePantry():</strong><br>
+                <strong>Time Complexity:</strong> O(ROWS * COLUMNS)<br>
+                <strong>Explanation:</strong> This function uses nested loops to fill the pantry grid with random food items. Both loops run ROWS times and COLUMNS times respectively, resulting in O(ROWS * COLUMNS) complexity.
+                <br><br>
+                <strong>renderPantry():</strong><br>
+                <strong>Time Complexity:</strong> O(ROWS * COLUMNS)<br>
+                <strong>Explanation:</strong> This function iterates over every cell in the pantry grid to render the food items. It uses nested loops similar to initializePantry(), thus the complexity is O(ROWS * COLUMNS).
+                <br><br>
+                <strong>onDrop(event):</strong><br>
+                <strong>Time Complexity:</strong> O(ROWS * COLUMNS)<br>
+                <strong>Explanation:</strong> This function calls removeItemFromPantry(), which has a complexity of O(ROWS * COLUMNS). The other operations within onDrop (like finding the item and updating the DOM) are comparatively constant time operations, thus the overall complexity is dominated by removeItemFromPantry().
+                <br><br>
+                <strong>removeItemFromPantry(item):</strong><br>
+                <strong>Time Complexity:</strong> O(ROWS * COLUMNS)<br>
+                <strong>Explanation:</strong> This function uses nested loops to find and remove an item from the pantry. In the worst case, it has to scan all cells, leading to O(ROWS * COLUMNS).
+                <br><br>
+                <strong>addItemToDropdown(section, item):</strong><br>
+                <strong>Time Complexity:</strong> O(n log n), where n is the number of items in the dropdown.<br>
+                <strong>Explanation:</strong> The addItemToDropdown function calls sortOptions, which sorts the dropdown options. Sorting has a complexity of O(n log n).
+                <br><br>
+                <strong>updateTimer():</strong><br>
+                <strong>Time Complexity:</strong> O(1)<br>
+                <strong>Explanation:</strong> This function updates the timer and checks if the time is up. The operations here are constant time.
+                <br><br>
+                <strong>autoSortPantry():</strong><br>
+                <strong>Time Complexity:</strong> O(ROWS * COLUMNS)<br>
+                <strong>Explanation:</strong> This function iterates over the entire pantry grid and moves items to their corresponding sections. Similar to the other grid operations, its complexity is O(ROWS * COLUMNS).
+                <br><br>
+                <strong>Overall Big O Complexity</strong><br>
+                Given that the most time-consuming operations involve iterating over the entire pantry grid, the overall time complexity for the main operations of the game (excluding the timer) can be described as:
+                <br><br>
+                <strong>Initialization:</strong> O(ROWS * COLUMNS) due to initializePantry() and renderPantry().<br>
+                <strong>Item Drop Handling:</strong> O(ROWS * COLUMNS) for onDrop() due to removeItemFromPantry().<br>
+                <strong>Auto Sort:</strong> O(ROWS * COLUMNS) for autoSortPantry().<br>
+                Therefore, the most significant factor influencing the overall time complexity is the size of the pantry grid. The total complexity of the core operations is primarily:
+                <br><br>
+                <strong>O(ROWS * COLUMNS)</strong>
+                <br><br>
+                This complexity is manageable for small grid sizes but will grow quadratically as the grid size increases.
+            </p>
+        </div>
+    </div>
+</header>
+</body>
+</html>

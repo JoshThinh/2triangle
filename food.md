@@ -16,12 +16,13 @@ permalink: /food
         <div class="box-center-header">
             <button class="btn-primary-right" onclick="games()">Games</button>
             <button class="btn-primary-mid" onclick="openFoodLeader()">Leaderboard</button>
+            <button class="btn-primary-left" onclick="explain()">Explain</button>
         <hr>
     <h1>Grocery Sorting Game</h1>
     <div id="score">Score: 0</div>
     <div id="price">Price: 0</div>
     <div id="timer">Time left: 60 seconds</div>
-    <button onclick="autoSortPantry()">Auto-Sort Pantry</button>
+    <!-- <button onclick="autoSortPantry()">Auto-Sort Pantry</button> -->
     <div id="pantry"></div>
     <div id="sections">
         <div class="section" data-section="Fruits">
