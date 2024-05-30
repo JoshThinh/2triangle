@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stockmaster.css">
+  <title>StockMaster Game</title>
+</head>
+<body>
+  <header>
+    <h1>StockMaster Game</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Shelves</h2>
+      <ul id="shelves">
+        <!-- Shelves will be generated dynamically -->
+      </ul>
+    </section>
+    <section>
+      <h2>Inventory</h2>
+      <table id="inventory">
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Initial Stock</th>
+            <th>Current Stock</th>
+            <th>Shelf Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Inventory items will be generated dynamically -->
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Game Information</h2>
+      <p>Time Remaining: <span id="time">0</span></p>
+      <p>Points: <span id="points">0</span></p>
+    </section>
+  </main>
+  <script>
+    let gameTimer;
+    let timeRemaining = 0;
+    let points = 0;
+    const shelves = [];
+    const inventory = [];
+
+    function startGame() {
+      gameTimer = setInterval(updateGame, 1000);
+      generateShelves();
+      generateInventory();
+      updateTime();
+    }
+
+    function updateGame() {
+      timeRemaining++;
+      updateTime();
+      updateShelves();
+      updateInventory();
+      checkGameOver();
+    }
+
+    function generateShelves() {
+      for (let i = 0; i < 5; i++) {
+        const shelf = {
+          number: i + 1,
+          stock: Math.floor(Math.random() * 50) + 50,
+          decreaseInterval: 1 // decrease every second
+        };
+        shelves.push(shelf);
+      }
+      displayShelves();
+    }
+
+    function generateInventory() {
+      for (const shelf of shelves) {
+        const item = {
+          name: `Item ${shelf.number}`,
+          initialStock: shelf.stock,
+          currentStock: shelf.stock,
+          shelfNumber: shelf.number
+        };
+        inventory.push(item);
+      }
+      displayInventory();
+    }
+
+    function updateTime() {
+      document.getElementById("time").textContent = timeRemaining;
+    }
+
+    function updateShelves() {
+      for (const shelf of shelves) {
+        const decreaseValue = Math.floor(Math.random() * 3) + 1; // random value between 1 and 3
+        shelf.stock -= decreaseValue;
+        if (shelf.stock < 0) {
+          shelf.stock = 0;
+        }
+      }
+    }
+
+    function updateInventory() {
+      for (const item of inventory) {
+        const shelf = shelves.find(s => s.number === item.shelfNumber);
+        item.currentStock = shelf.stock;
+      }
+      displayInventory();
+    }
+
+    function checkGameOver() {
+      for (const shelf of shelves) {
+        if (shelf.stock === 0) {
+          clearInterval(gameTimer);
+          alert("Game Over!");
+          return;
+        }
+      }
+    }
+
+    function displayShelves() {
+      const shelvesList = document.getElementById("shelves");
+      shelvesList.innerHTML = "";
+      for (const shelf of shelves) {
+        const shelfListItem = document.createElement("li");
+        const shelfButton = document.createElement("button");
+        shelfButton.textContent = `Restock Shelf ${shelf.number}`;
+        shelfButton.onclick = () => {
+          points++;
+          document.getElementById("points").textContent = `Points: ${points}`;
+          updateShelf(shelf.number);
+        };
+        shelfListItem.appendChild(shelfButton);
+        shelvesList.appendChild(shelfListItem);
+      }
+    }
+
+    function updateShelf(shelfNumber) {
+      const shelf = shelves.find(s => s.number === shelfNumber);
+      shelf.stock = Math.min(shelf.stock + 1, 100);
+      updateInventory();
+    }
+
+    function displayInventory() {
+      const inventoryTable = document.getElementById("inventory");
+      inventoryTable.innerHTML = "";
+      const tableBody = document.createElement("tbody");
+      for (const item of inventory) {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.initialStock}</td>
+          <td>${item.currentStock}</td>
+          <td>${item.shelfNumber}</td>
+        `;
+        tableBody.appendChild(row);
+      }
+      inventoryTable.appendChild(tableBody);
+    }
+
+    startGame();
+  </script>
+</body>
+</html>
